@@ -12,12 +12,24 @@ code {
     monospace;
 }
 
+input {
+  margin-bottom: 20px;
+  font-size: 1rem!important;
+}
+
+.already-acc {
+  text-align: center;
+}
+
+
+
 
 .signupParentDiv {
   border: 1px solid black;
   width: max-content;
   padding: 10px;
   position: absolute;
+  background-color: #f4f4f4;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,6 +39,7 @@ code {
 .signupParentDiv .input {
   border-top-color: transparent;
   width: 350px;
+  background-color: #f2f2f2;
   border-left-color: transparent;
   border-right-color: transparent;
   outline-color: transparent;
@@ -36,8 +49,9 @@ code {
   width: 100%;
   height: 48px;
   /* border-color: transparent; */
-  background-color: #002f34;
+  background-color: #204db6;
   color: whitesmoke;
+  border-radius: 0.5rem;
   font-weight: 900;
 }
 .signupParentDiv button:hover {
@@ -50,4 +64,50 @@ code {
   display: flex;
   justify-content: center;
   cursor: pointer;
+}
+
+.loginParentDiv {
+  border: 1px solid black;
+  width: max-content;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+}
+
+.loginParentDiv .input {
+  width: 300px;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  outline-color: transparent;
+}
+
+.loginParentDiv button {
+  width: 100%;
+  height: 48px;
+  /* border-color: transparent; */
+  background-color: #204db6;
+  color: whitesmoke;
+  border-radius: 0.5rem;
+  font-weight: 900;
+}
+.loginParentDiv button:hover {
+  background-color: white;
+  color: #002f34;
+  border: 2px solid #002f34;
+}
+
+.loginParentDiv a {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.dont-have {
+  text-align: center;
+
 }
