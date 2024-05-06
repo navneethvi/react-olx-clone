@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Heart from "../assets/Heart";
 import { FirebaseContext } from "../store/firebaseContext";
-
+import { useNavigate } from "react-router-dom";
 import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { PostContext } from "../store/PostContext";
 
@@ -9,6 +9,7 @@ function Posts() {
   const [products, setProducts] = useState([]);
   const { firebase } = useContext(FirebaseContext);
   const {setPostDetails} = useContext(PostContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
 
@@ -45,6 +46,7 @@ function Posts() {
             <div key={product.id} className="card" onClick={()=>{
                 setPostDetails(product)
                 console.log(product.name);
+                navigate("/product");
             }}>
             <div className="favorite">
               <Heart></Heart>
