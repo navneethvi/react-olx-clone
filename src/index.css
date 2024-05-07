@@ -165,21 +165,35 @@ input {
   color: #002f34;
 }
 
-.recommendations .cards {
-  display: flex;
-}
 
-.moreView .cards {
+
+.moreView .quickMenuCards {
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
 }
 
+.moreView .quickMenuCards::-webkit-scrollbar{
+  display: none;
+}
+
+.recommendations .freshRecommendationsCards {
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.recommendations .freshRecommendationsCards::-webkit-scrollbar {
+  display: none;
+}
+
 .card {
   margin-right: 15px;
   padding: 13px;
-  max-width: 222px;
-  width: 222px;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 0.5rem;
+  max-width: 203px;
+  width: 201px;
   height: 270px;
   display: inline-block;
   cursor: pointer;
@@ -302,50 +316,44 @@ input {
   border-color: transparent;
   outline-color: transparent;
 }
-
 .productSearch {
-  width: 35em;
+  width: 32em;
   height: 48px;
   border: 2px solid #002f34;
   border-radius: 4px;
   display: flex;
   align-items: center;
   background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .productSearch .input {
-  width: 100%;
+  flex: 1; /* Take up remaining space */
   height: 100%;
-  display: flex;
 }
 
 .productSearch .input input {
-  border-color: transparent;
-  outline-color: transparent;
   width: 100%;
-  align-items: center;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 0 12px; /* Adjust input padding */
 }
 
 .productSearch .searchAction {
-  min-width: 48px;
+  width: 48px;
   height: 48px;
-  position: relative;
   display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   background-color: #002f34;
   border-radius: 0 4px 4px 0;
 }
 
 .productSearch .searchAction svg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   fill: white;
 }
+
 
 .language {
   height: 48px;
@@ -386,6 +394,7 @@ input {
 .sellMenu {
   position: relative;
   cursor: pointer;
+  margin-right: 25px;
 }
 
 .sellMenu .all {
@@ -513,4 +522,26 @@ input {
   color: #002f34;
   font-weight: 400;
   padding: 0;
+}
+
+.shimmer-wrapper {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+  width: 100%; /* Adjust the width of the container */
+}
+
+.shimmer-card {
+  margin-right: 15px;
+  padding: 13px;
+  /* border: 1px solid rgb(158, 158, 158); */
+  background-color: rgb(224, 224, 224);
+  border-radius: 0.5rem;
+  max-width: 222px;
+  width: 201px;
+  height: 270px;
+  display: inline-block;
+  cursor: pointer;
+  flex-shrink: 0;
 }
