@@ -6,12 +6,15 @@ import { getFirestore, getDocs, collection } from "firebase/firestore";
 import { PostContext } from "../store/PostContext";
 import Shimmer from "./Shimmer";
 
-function Posts() {
+function Posts({ searchText }) {
   const [products, setProducts] = useState([]);
   const { firebase } = useContext(FirebaseContext);
   const { setPostDetails } = useContext(PostContext);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
+  //   console.log(searchText);
+  console.log(products);
 
   useEffect(() => {
     const db = getFirestore(firebase);
@@ -33,6 +36,12 @@ function Posts() {
     return () => {};
   }, []);
 
+  const filteredProducts = searchText
+  ? products.filter((prod) =>
+      prod.name.toLowerCase().includes(searchText.toLowerCase())
+    )
+  : products;
+
   return (
     <div className="postParentDiv">
       <div className="moreView">
@@ -43,8 +52,11 @@ function Posts() {
         {isLoading ? (
           <Shimmer />
         ) : (
+            filteredProducts.length === 0 ? (
+              <h1 style={{color : 'gray'}}>No products found</h1>
+            ) : (
           <div className="quickMenuCards">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 className="card"
@@ -71,6 +83,7 @@ function Posts() {
               </div>
             ))}
           </div>
+            )
         )}
       </div>
       <div className="recommendations">
@@ -80,11 +93,12 @@ function Posts() {
         {isLoading ? (
           <Shimmer />
         ) : (
-          <div className="freshRecommendationsCards">
+            <div className="freshRecommendationsCards">
             {products.map((product) => (
               <div
                 key={product.id}
                 className="card"
+                style={{marginRight : '20px'}}
                 onClick={() => {
                   setPostDetails(product);
                   console.log(product.name);
@@ -108,6 +122,7 @@ function Posts() {
               </div>
             ))}
           </div>
+          
         )}
       </div>
     </div>

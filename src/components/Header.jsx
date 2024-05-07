@@ -9,10 +9,15 @@ import { FirebaseContext } from "../store/firebaseContext";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({searchText, setSearchText}) {
   const { user } = useContext(AuthContext);
   const { firebase } = useContext(FirebaseContext);
   const navigate = useNavigate();
+
+
+  const handleSearch = (e) => {
+    setSearchText(e.target.value)
+  }
 
   const handleLogout = () => {
     const auth = getAuth(firebase);
@@ -46,6 +51,8 @@ function Header() {
             <input
               type="text"
               placeholder="Find car,mobile phone and more..."
+              value={searchText}
+              onChange={handleSearch}
             />
           </div>
           <div className="searchAction">
